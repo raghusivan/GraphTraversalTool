@@ -64,6 +64,10 @@ public class GraphGenerator {
 
         graph.values().forEach(edges -> edges.sort(Comparator.comparingInt(Edge::getTo)));
 
+        if (!GraphValidator.isGraphConnected(graph)) {
+            throw new IllegalStateException("The generated graph is not connected.");
+        }
+
         return graph;
     }
 }
