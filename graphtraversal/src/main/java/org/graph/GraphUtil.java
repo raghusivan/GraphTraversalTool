@@ -1,8 +1,12 @@
 package org.graph;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * Utility class for graph-related operations.
@@ -39,16 +43,13 @@ public class GraphUtil {
      */
     public static void printGraph(Map<Integer, List<Edge>> graph) {
         System.out.println("{");
-        graph.forEach((key, value) -> {
-            System.out.print("  :" + key + " [");
-            for (int i = 0; i < value.size(); i++) {
-                System.out.print(value.get(i));
-                if (i < value.size() - 1) {
-                    System.out.print(", ");
-                }
-            }
-            System.out.println("],");
-        });
+        String graphString = graph.entrySet().stream()
+                .map(entry -> "  :" + entry.getKey() + " [" +
+                        entry.getValue().stream()
+                                .map(Edge::toString)
+                                .collect(Collectors.joining(", ")) + "]")
+                .collect(Collectors.joining(",\n"));
+        System.out.println(graphString);
         System.out.println("}");
     }
 
@@ -59,10 +60,16 @@ public class GraphUtil {
      */
     public static void printGraphProperties(Map<Integer, List<Edge>> graph) {
         System.out.println("Graph Properties:");
-        graph.keySet().forEach(v -> {
-            int eccentricity = GraphProperties.eccentricity(graph, v);
-            System.out.println("Eccentricity of node " + v + ": " + eccentricity);
-        });
+
+        // Select a random node
+        List<Integer> nodes = new ArrayList<>(graph.keySet());
+        Random rand = new Random();
+        int randomNode = nodes.get(rand.nextInt(nodes.size()));
+
+        // Calculate the eccentricity of the random node
+        int eccentricity = GraphProperties.eccentricity(graph, randomNode);
+        System.out.println("Eccentricity of node " + randomNode + ": " + eccentricity);
+
         System.out.println("Radius of the graph: " + GraphProperties.radius(graph));
         System.out.println("Diameter of the graph: " + GraphProperties.diameter(graph));
     }

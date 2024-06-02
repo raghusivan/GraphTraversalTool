@@ -1,11 +1,6 @@
 package org.graph;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -37,11 +32,11 @@ public class GraphGenerator {
         Function<Integer, Edge> createEdge = to -> new Edge(to, rand.nextInt(10) + 1);
 
         // Create the initial graph with each node having an edge to the next node.
-        Map<Integer, List<Edge>> initialGraph = IntStream.range(1, N)
+        Map<Integer, List<Edge>> initialGraph = IntStream.rangeClosed(1, N)
                 .boxed()
                 .collect(Collectors.toMap(
                         i -> i,
-                        i -> new ArrayList<>(List.of(createEdge.apply(i + 1))),
+                        i -> (i < N) ? new ArrayList<>(List.of(createEdge.apply(i + 1))) : new ArrayList<>(),
                         (e1, e2) -> {
                             List<Edge> edges = new ArrayList<>(e1);
                             edges.addAll(e2);
@@ -51,49 +46,34 @@ public class GraphGenerator {
                 ));
 
         // Function to add additional edges to the graph until the required number of edges (S) is reached.
-        Function<Map<Integer, List<Edge>>, Map<Integer, List<Edge>>> addEdges = graph -> {
-            int edgesToAdd = S - (N - 1);
-            List<Integer> vertices = new ArrayList<>(graph.keySet());
+        int edgesToAdd = S - (N - 1);
+        List<Integer> vertices = new ArrayList<>(initialGraph.keySet());
 
-            // Add edges until the desired number of edges (S) is reached.
-            while (edgesToAdd > 0) {
-                int from = vertices.get(rand.nextInt(vertices.size()));
-                int to = rand.nextInt(N) + 1;
-                if (from != to) {
-                    int weight = rand.nextInt(10) + 1;
-                    List<Edge> neighbors = graph.computeIfAbsent(from, k -> new ArrayList<>());
-                    if (neighbors.stream().noneMatch(e -> e.getTo() == to)) {
-                        neighbors.add(new Edge(to, weight));
-                        edgesToAdd--;
-                    }
+        while (edgesToAdd > 0) {
+            int from = vertices.get(rand.nextInt(vertices.size()));
+            int to = rand.nextInt(N) + 1;
+            if (from != to) {
+                int weight = rand.nextInt(10) + 1;
+                List<Edge> neighbors = initialGraph.computeIfAbsent(from, k -> new ArrayList<>());
+                if (neighbors.stream().noneMatch(e -> e.getTo() == to)) {
+                    neighbors.add(new Edge(to, weight));
+                    edgesToAdd--;
                 }
             }
+        }
 
-            return graph;
-        };
-
-        // Function to ensure all vertices are present in the graph, even if they have no edges.
-        Function<Map<Integer, List<Edge>>, Map<Integer, List<Edge>>> ensureAllVertices = graph ->
-                IntStream.rangeClosed(1, N)
-                        .boxed()
-                        .reduce(graph, (g, i) -> {
-                            g.putIfAbsent(i, new ArrayList<>());
-                            return g;
-                        }, (g1, g2) -> g1);
-
-        // Apply the functions to ensure all vertices are present and to add additional edges.
-        Map<Integer, List<Edge>> graph = ensureAllVertices
-                .andThen(addEdges)
-                .apply(initialGraph);
+        // Ensure all vertices are present in the graph, even if they have no edges.
+        IntStream.rangeClosed(1, N)
+                .forEach(i -> initialGraph.putIfAbsent(i, new ArrayList<>()));
 
         // Sort the edges for each node by the destination node ID.
-        graph.values().forEach(edges -> edges.sort(Comparator.comparingInt(Edge::getTo)));
+        initialGraph.values().forEach(edges -> edges.sort(Comparator.comparingInt(Edge::getTo)));
 
         // Check if the graph is connected, throw an exception if it is not.
-        if (!GraphValidator.isGraphConnected(graph)) {
+        if (!GraphValidator.isGraphConnected(initialGraph)) {
             throw new IllegalStateException("The generated graph is not connected.");
         }
 
-        return graph;
+        return Collections.unmodifiableMap(initialGraph);
     }
 }
