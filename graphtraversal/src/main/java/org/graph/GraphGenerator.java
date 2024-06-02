@@ -13,6 +13,9 @@ import java.util.stream.IntStream;
 public class GraphGenerator {
 
     public static Map<Integer, List<Edge>> generateGraph(int N, int S) {
+
+        GraphValidator.validateGraphParameters(N, S);
+
         Random rand = new Random();
 
         Function<Integer, Edge> createEdge = to -> new Edge(to, rand.nextInt(10) + 1);

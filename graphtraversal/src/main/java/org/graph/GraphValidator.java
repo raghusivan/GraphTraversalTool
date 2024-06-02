@@ -13,6 +13,13 @@ import java.util.stream.Stream;
 
 public class GraphValidator {
 
+    public static void validateGraphParameters(int N, int S) {
+        if (S < N - 1) {
+            System.out.println("Validation Error: The number of edges (S = " + S + ") is insufficient to form a connected graph with " + N + " nodes. A minimum of " + (N - 1) + " edges is required.");
+            throw new IllegalArgumentException("Number of edges S must be at least N - 1 for the graph to be connected. Given: N = " + N + ", S = " + S);
+        }
+    }
+
     public static <T> Stream<T> seqGraph(Queue<T> queue, Map<T, List<Edge>> graph, T start, Function<Edge, T> edgeMapper) {
         Set<T> explored = new HashSet<>();
         queue.add(start);

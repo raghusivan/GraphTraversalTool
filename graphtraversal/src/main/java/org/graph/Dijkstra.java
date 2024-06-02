@@ -27,9 +27,15 @@ public class Dijkstra {
                 if (alt < distances.get(edge.getTo())) {
                     distances.put(edge.getTo(), alt);
                     previous.put(edge.getTo(), closest);
+                    nodes.remove(edge.getTo());
                     nodes.add(edge.getTo());
                 }
             }
+        }
+
+        // Ensure distances for unreachable nodes remain as Integer.MAX_VALUE
+        for (int node : graph.keySet()) {
+            distances.putIfAbsent(node, Integer.MAX_VALUE);
         }
 
         return distances;
