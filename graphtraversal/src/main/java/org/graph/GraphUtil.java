@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * Utility class for graph-related operations.
@@ -72,5 +70,24 @@ public class GraphUtil {
 
         System.out.println("Radius of the graph: " + GraphProperties.radius(graph));
         System.out.println("Diameter of the graph: " + GraphProperties.diameter(graph));
+    }
+
+    /**
+     * Randomly selects two nodes and prints the shortest path distance between them.
+     *
+     * @param graph The graph to analyze.
+     * @param args  The command line arguments.
+     */
+    public static void printShortestPathBetweenRandomNodes(Map<Integer, List<Edge>> graph, String[] args) {
+        int N = Integer.parseInt(args[1]);
+        Random rand = new Random();
+        int start = rand.nextInt(N) + 1;
+        int end;
+        do {
+            end = rand.nextInt(N) + 1;
+        } while (start == end);
+
+        List<Integer> shortestPath = Dijkstra.shortestPath(graph, start, end);
+        System.out.println("Shortest path from " + start + " to " + end + ": " + shortestPath);
     }
 }

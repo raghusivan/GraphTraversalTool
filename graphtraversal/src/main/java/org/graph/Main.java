@@ -2,11 +2,7 @@ package org.graph;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
-/**
- * Main class for running the graph application.
- */
 public class Main {
 
     public static void main(String[] args) {
@@ -18,19 +14,10 @@ public class Main {
 
         GraphUtil.printGraph(graph);
 
-        int N = Integer.parseInt(args[1]);
-
         // Randomly select two nodes and print the shortest path distance between them
-        Random rand = new Random();
-        int start = rand.nextInt(N) + 1;
-        int end;
-        do {
-            end = rand.nextInt(N) + 1;
-        } while (start == end);
+        GraphUtil.printShortestPathBetweenRandomNodes(graph, args);
 
-        List<Integer> shortestPath = Dijkstra.shortestPath(graph, start, end);
-        System.out.println("Shortest path from " + start + " to " + end + ": " + shortestPath);
-
+        // Print graph properties
         GraphUtil.printGraphProperties(graph);
     }
 }
