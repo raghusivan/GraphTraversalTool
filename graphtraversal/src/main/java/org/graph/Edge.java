@@ -2,6 +2,9 @@ package org.graph;
 
 import java.util.Objects;
 
+/**
+ * This class represents an edge in a graph, with a destination node and a weight.
+ */
 public class Edge {
     private final int to;
     private final int weight;
