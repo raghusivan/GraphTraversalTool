@@ -19,7 +19,7 @@ public class GraphUtil {
      */
     public static Map<Integer, List<Edge>> createGraphFromArgs(String[] args) {
         if (args.length < 4) {
-            System.out.println("Usage: graph -N <number_of_vertices> -S <number_of_edges>");
+            System.out.println("Usage: java -jar graph.jar -N <number_of_vertices> -S <number_of_edges>");
             return null;
         }
 
