@@ -7,7 +7,7 @@ This project provides a set of utilities to generate, traverse, and analyze grap
 ## Running the Application
 
 ### 1. Unzip the Project
-Unzip the downloaded project archive. It contains the `graph.jar` file and the source code.
+Unzip the downloaded project archive. It contains the `graph.jar` file or you can download from above as well and the source code.
 
 ### 2. Navigate to the Project Directory
 Open your terminal and navigate to the directory where the graph.jar file along with project has been extracted.
