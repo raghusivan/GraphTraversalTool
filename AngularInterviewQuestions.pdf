@@ -1,0 +1,162 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 6 0 R 7 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Length 3791 >>
+stream
+BT
+/F1 12 Tf
+50 742 Td (1. How do you define a component in Angular?) Tj
+50 728 Td (Situation: Building a UI element as a reusable component. Task: Create a new component) Tj
+50 714 Td (with a template and logic. Action: Use the CLI command `ng generate component my-comp` to) Tj
+50 700 Td (scaffold. Then implement the selector, template, and logic in TypeScript. Result: The) Tj
+50 686 Td (component can be reused across the application and referenced in templates via `<app-my-) Tj
+50 672 Td (comp></app-my-comp>`.) Tj
+50 658 Td () Tj
+50 644 Td (2. Explain dependency injection in Angular.) Tj
+50 630 Td (Situation: Components require services for data or logic. Task: Provide those services in) Tj
+50 616 Td (a decoupled manner. Action: Declare services with `@Injectable` and register them in a) Tj
+50 602 Td (module or component provider array. Angular's injector supplies instances where needed.) Tj
+50 588 Td (Result: This encourages modular design and simplifies testing by allowing service mocking.) Tj
+50 574 Td () Tj
+50 560 Td (3. Describe Observables vs Promises.) Tj
+50 546 Td (Situation: Handling asynchronous operations like HTTP requests. Task: Decide whether to) Tj
+50 532 Td (use Observables or Promises. Action: Observables from RxJS support streams with multiple) Tj
+50 518 Td (values and operators, e.g. `http.get\('/api'\).subscribe\(...\)`; Promises represent a single) Tj
+50 504 Td (future value, e.g. `fetch\('/api'\).then\(...\)`. Result: Observables provide more flexibility) Tj
+50 490 Td (for complex async flows, while Promises are simpler for one-off operations.) Tj
+50 476 Td () Tj
+50 462 Td (4. How does Angular change detection work?) Tj
+50 448 Td (Situation: Updates to component state must reflect in the view. Task: Trigger view updates) Tj
+50 434 Td (efficiently. Action: Angular's change detector checks component data bindings when) Tj
+50 420 Td (triggered by events or `markForCheck`. `OnPush` strategy can limit checks to input) Tj
+50 406 Td (changes. Result: The view stays in sync with data while minimizing unnecessary DOM) Tj
+50 392 Td (operations.) Tj
+50 378 Td () Tj
+50 364 Td (5. What are reactive forms?) Tj
+50 350 Td (Situation: Building forms that scale with dynamic validation. Task: Manage complex form) Tj
+50 336 Td (state in code. Action: Use `FormGroup`, `FormControl`, and `FormBuilder` to construct the) Tj
+50 322 Td (form model in TypeScript, subscribing to value and status changes. Result: Reactive forms) Tj
+50 308 Td (provide explicit control, easier unit testing, and dynamic validation rules.) Tj
+50 294 Td () Tj
+50 280 Td (6. Give an example of a structural directive.) Tj
+50 266 Td (Situation: Conditionally displaying or repeating elements. Task: Use Angular syntax to) Tj
+50 252 Td (manipulate DOM layout. Action: Apply `*ngIf` to show/hide markup, or `*ngFor` to iterate) Tj
+50 238 Td (over a list. Example: `<div *ngIf="loggedIn">Welcome</div>`. Result: Structural directives) Tj
+50 224 Td (change the DOM tree based on application state.) Tj
+50 210 Td () Tj
+50 196 Td (7. Explain pipes in Angular.) Tj
+50 182 Td (Situation: Formatting data for display. Task: Transform values in templates. Action: Use) Tj
+50 168 Td (built-in pipes like `date` or create custom pipes implementing `transform`. Example: `{{) Tj
+50 154 Td (birthday | date:'longDate' }}`. Result: Data appears formatted without altering the) Tj
+50 140 Td (underlying model.) Tj
+50 126 Td () Tj
+50 112 Td (8. How do you handle HTTP errors?) Tj
+50 98 Td (Situation: API calls may fail due to network or server issues. Task: Gracefully respond to) Tj
+50 84 Td (errors. Action: Use HttpClient with `catchError` from RxJS to intercept errors and return) Tj
+50 70 Td (a user-friendly message or fallback value. Result: The application remains robust and) Tj
+ET
+endstream
+endobj
+4 0 obj
+<< /Length 3617 >>
+stream
+BT
+/F1 12 Tf
+50 742 Td (provides feedback to the user.) Tj
+50 728 Td () Tj
+50 714 Td (9. What is lazy loading of modules?) Tj
+50 700 Td (Situation: Large apps need faster initial load time. Task: Load feature modules only when) Tj
+50 686 Td (required. Action: Configure the router with `loadChildren` to import modules) Tj
+50 672 Td (asynchronously, e.g. `{ path: 'admin', loadChildren: \(\) =>) Tj
+50 658 Td (import\('./admin/admin.module'\).then\(m => m.AdminModule\) }`. Result: Only necessary code is) Tj
+50 644 Td (downloaded, improving startup performance.) Tj
+50 630 Td () Tj
+50 616 Td (10. Describe a guard in routing.) Tj
+50 602 Td (Situation: Restricting access to certain routes. Task: Check conditions before navigation.) Tj
+50 588 Td (Action: Implement `CanActivate` or other guard interfaces and return true/false or a) Tj
+50 574 Td (UrlTree. Example guard: `canActivate\(route, state\) { return this.auth.isLoggedIn\(\); }`) Tj
+50 560 Td (Result: Users are redirected if they don't meet requirements, enhancing security.) Tj
+50 546 Td () Tj
+50 532 Td (11. How do you share data between components?) Tj
+50 518 Td (Situation: Sibling components must communicate. Task: Pass data without tight coupling.) Tj
+50 504 Td (Action: Use a shared service with RxJS `Subject`, or pass inputs/outputs via parent) Tj
+50 490 Td (components. Example: `this.messageService.send\(msg\)`. Result: Components remain modular) Tj
+50 476 Td (while still exchanging information.) Tj
+50 462 Td () Tj
+50 448 Td (12. What is the purpose of NgZone?) Tj
+50 434 Td (Situation: Some asynchronous operations happen outside Angular's zone. Task: Ensure change) Tj
+50 420 Td (detection runs after those operations. Action: Inject `NgZone` and run code inside) Tj
+50 406 Td (`ngZone.run\(\(\) => { ... }\)` so Angular notices changes. Result: UI updates correctly even) Tj
+50 392 Td (when external APIs trigger callbacks.) Tj
+50 378 Td () Tj
+50 364 Td (13. Explain unit testing a component with TestBed.) Tj
+50 350 Td (Situation: A component has logic that should be verified automatically. Task: Write a unit) Tj
+50 336 Td (test using Angular's utilities. Action: Configure TestBed with the component and) Tj
+50 322 Td (dependencies, create the component via `TestBed.createComponent`, and assert on the) Tj
+50 308 Td (component's behavior. Result: Regressions are caught early, increasing confidence in code) Tj
+50 294 Td (changes.) Tj
+50 280 Td () Tj
+50 266 Td (14. Give an example of a custom validator.) Tj
+50 252 Td (Situation: Need to enforce domain-specific input rules. Task: Create a reusable validator) Tj
+50 238 Td (for reactive forms. Action: Define a function that returns a validation error object when) Tj
+50 224 Td (rules fail. Example: `const noSpecialChars: ValidatorFn = control =>) Tj
+50 210 Td (/[^a-zA-Z0-9]/.test\(control.value\) ? { special: true } : null;` Result: Form controls) Tj
+50 196 Td (using this validator automatically display errors when invalid.) Tj
+50 182 Td () Tj
+50 168 Td (15. How do you configure global error handling?) Tj
+50 154 Td (Situation: Unhandled exceptions should be logged centrally. Task: Provide an) Tj
+50 140 Td (implementation of `ErrorHandler`. Action: Create a class extending `ErrorHandler` and) Tj
+50 126 Td (override `handleError` to send errors to an API or logging service. Provide it in the root) Tj
+50 112 Td (module. Result: Errors are captured and reported consistently across the app.) Tj
+50 98 Td () Tj
+50 84 Td (16. What is ahead-of-time \(AOT\) compilation?) Tj
+50 70 Td (Situation: Angular templates are normally compiled at runtime. Task: Improve startup) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Length 335 >>
+stream
+BT
+/F1 12 Tf
+50 742 Td (performance and detect template errors earlier. Action: Use the Angular CLI with the) Tj
+50 728 Td (`--aot` flag or enable AOT in build options. This compiles templates during the build) Tj
+50 714 Td (step. Result: Faster rendering in the browser and earlier detection of template issues.) Tj
+50 700 Td () Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 2 0 R /Resources << /Font << /F1 9 0 R >> >> >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 3 0 R /Resources << /Font << /F1 9 0 R >> >> >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 9 0 R >> >> >>
+endobj
+9 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000127 00000 n 
+0000003970 00000 n 
+0000007639 00000 n 
+0000008025 00000 n 
+0000008151 00000 n 
+0000008277 00000 n 
+0000008403 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+8473
+%%EOF
