@@ -1,3 +1,4 @@
+
 # SQL Interview Questions in STAR Format
 
 This document presents 50 frequently asked SQL interview questions. Each answer follows the **Situation, Task, Action, Result** (STAR) approach. Simple diagrams illustrate key concepts.
@@ -316,3 +317,4 @@ This document presents 50 frequently asked SQL interview questions. Each answer 
 **Task:** Balance read speed with storage requirements.
 **Action:** Create indexes only on columns used in queries and periodically review them.
 **Result:** Queries are optimized without excessive memory consumption.
+

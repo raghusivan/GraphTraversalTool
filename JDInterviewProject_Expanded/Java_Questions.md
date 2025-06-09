@@ -1,3 +1,4 @@
+
 # Frequently Asked Java Interview Questions
 
 The following collection contains commonly asked Java interview questions with concise explanations and code snippets. These questions focus on fundamental concepts that appear often in interviews.

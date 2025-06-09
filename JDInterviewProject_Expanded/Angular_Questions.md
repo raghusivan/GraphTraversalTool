@@ -1,3 +1,4 @@
+
 # More Angular Interview Questions in STAR Format
 
 The questions below continue the STAR (Situation, Task, Action, Result) approach. They are designed to be unique and cover a wide range of Angular topics. Code snippets accompany many answers for clarity.
@@ -486,4 +487,5 @@ beforeEach(() => {
 **Task:** Track when change detection runs.
 **Action:** Switch to `ChangeDetectionStrategy.OnPush` and log inside `ngDoCheck` or `ngOnChanges`.
 **Result:** You can see exactly when Angular checks for updates, aiding performance tuning.
+
 

@@ -1,3 +1,4 @@
+
 # AWS Interview Questions and Answers (Detailed)
 
 Below is a collection of 50 common AWS interview questions. Each answer includes an in-depth explanation, small code snippets, and diagrams to illustrate the concepts. These examples emphasize how AWS services store data in memory and scale efficiently.

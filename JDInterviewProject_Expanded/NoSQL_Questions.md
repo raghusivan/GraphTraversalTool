@@ -1,3 +1,4 @@
+
 # NoSQL Interview Questions in STAR Format
 
 This document provides 50 frequently asked NoSQL interview questions using the **Situation, Task, Action, Result** (STAR) structure. Diagrams and explanations highlight key concepts for document, key-value, column, and graph databases.
@@ -303,3 +304,4 @@ This document provides 50 frequently asked NoSQL interview questions using the *
 **Task:** Reduce disk I/O and network latency.
 **Action:** Use in-memory caches, hot rows, or data replication in RAM.
 **Result:** Low-latency responses and reduced load on disks.
+
